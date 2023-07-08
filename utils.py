@@ -70,7 +70,7 @@ def forward_feature_selection(data, feature_columns, target_column):
     print('\nwinners:')
     print(f"{', '.join(chosen_features)}: acc = {best_acc:.4f}")
 
-    # append new features iteratively until acc decreases
+    # append new features iteratively (until acc decreases)
     for i in range(len(feature_columns)-2):
         chosen_features_old = chosen_features
         best_acc_old = best_acc
@@ -94,13 +94,12 @@ def forward_feature_selection(data, feature_columns, target_column):
         best_acc = max(new_acc_list)
         print('winners:')
         print(f"{', '.join(chosen_features)}, acc = {best_acc:.4f}")
-        if best_acc < best_acc_old:
-            print('break loop, adding these features harmed generalizability')
-            # final result
-            print('\nfinal result')
-            print(f"{', '.join(chosen_features_old)}, acc = {best_acc_old:.4f}")
-            break
-
+        # if best_acc < best_acc_old:
+        #     print('break loop, adding these features harmed generalizability')
+        #     # final result
+        #     print('\nfinal result')
+        #     print(f"{', '.join(chosen_features_old)}, acc = {best_acc_old:.4f}")
+        #     break
 
 
 if __name__ == '__main__':
