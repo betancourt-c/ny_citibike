@@ -14,7 +14,7 @@ def crow_distance(start_station_latitude,
                   end_station_latitude,
                   end_station_longitude):
     """
-    Lon, lat in degrees, can be arrays
+    Input: Lon, lat in degrees, can be arrays
     output: the distance between the points in meters
     """
 
@@ -57,7 +57,7 @@ def forward_feature_selection(data, feature_columns, target_column):
         x_dev = data.loc[data.dev_set, pair]
         y_train = data.loc[data.train_set, target_column]
         y_dev = data.loc[data.dev_set, target_column]
-        rf = RandomForestClassifier(n_estimators=500)
+        rf = RandomForestClassifier(n_estimators=500, random_state=1)
         rf.fit(x_train, y_train.to_numpy().reshape(-1))
         y_dev_hat = rf.predict(x_dev)
         acc = accuracy_score(y_dev, y_dev_hat)
@@ -104,7 +104,7 @@ def forward_feature_selection(data, feature_columns, target_column):
 
 if __name__ == '__main__':
     """
-    Simple tests
+    Test
     """
 
     lat_1 = 40.767272
